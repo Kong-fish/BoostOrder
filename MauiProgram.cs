@@ -2,9 +2,11 @@
 using BO_Mobile.Models;
 using BO_Mobile.ViewModels;
 using BO_Mobile.Views;
+using BO_Mobile.Services;
+
 
 namespace BO_Mobile;
-
+//App Startup and configuration
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()

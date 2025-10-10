@@ -1,6 +1,7 @@
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.runtimeconfig.json
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.pdb
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\CommunityToolkit.Mvvm.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.dll
@@ -15,6 +16,10 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x6
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Essentials.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\SQLite-net.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\SQLitePCLRaw.batteries_v2.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\SQLitePCLRaw.core.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\SQLitePCLRaw.provider.sqlite3.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ar\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ca\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-ios\iossimulator-x64\cs\Microsoft.Maui.Controls.resources.dll
@@ -298,6 +303,7 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x6
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.AssemblyInfoInputs.cache
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.AssemblyInfo.cs
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.csproj.CoreCompileInputs.cache
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.sourcelink.json
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\XamlC.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.csproj.Up2Date
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\BO_Mobile.dll

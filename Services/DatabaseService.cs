@@ -1,7 +1,8 @@
-namespace BO_Mobile.Models;
 using SQLite;
 using System.Text.Json;
+using BO_Mobile.Models;
 
+namespace BO_Mobile.Services;
 public class DatabaseService
 {
     private SQLiteAsyncConnection _database;
@@ -56,8 +57,7 @@ public class ProductDto
     public string Name { get; set; }
     public string Sku { get; set; }
     public string Type { get; set; }
-    public string Price { get; set; }
-    public int? StockQuantity { get; set; }
+    public bool InStock { get; set; } // Added to match the Product model
 
     // Store complex data as a JSON string
     public string ImagesJson { get; set; }
@@ -72,8 +72,7 @@ public class ProductDto
         Name = product.Name;
         Sku = product.Sku;
         Type = product.Type;
-        Price = product.Price;
-        StockQuantity = product.StockQuantity;
+        InStock = product.InStock;
         ImagesJson = JsonSerializer.Serialize(product.Images);
         VariationsJson = JsonSerializer.Serialize(product.Variations);
     }
@@ -87,10 +86,11 @@ public class ProductDto
             Name = this.Name,
             Sku = this.Sku,
             Type = this.Type,
-            Price = this.Price,
-            StockQuantity = this.StockQuantity,
-            Images = JsonSerializer.Deserialize<List<ProductImage>>(this.ImagesJson),
+            InStock = this.InStock,
+            // Use the fully qualified name to resolve ambiguity
+            Images = JsonSerializer.Deserialize<List<BO_Mobile.Models.Image>>(this.ImagesJson),
             Variations = JsonSerializer.Deserialize<List<Variation>>(this.VariationsJson)
         };
     }
 }
+
