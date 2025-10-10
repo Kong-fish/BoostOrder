@@ -3,12 +3,13 @@
     x:Class="BO_Mobile.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BO_Mobile"
+    xmlns:local="clr-namespace:BO_Mobile.Views"
+    Shell.FlyoutBehavior="Disabled"
     Title="BO_Mobile">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Catalog"
+        ContentTemplate="{DataTemplate local:CatalogPage}"
+        Route="CatalogPage" />
 
 </Shell>

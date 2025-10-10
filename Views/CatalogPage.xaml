@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:BO_Mobile.ViewModels"
+             xmlns:models="clr-namespace:BO_Mobile.Models"
+             x:Class="BO_Mobile.Views.CatalogPage"
+             Title="Catalog">
+
+    <Grid RowDefinitions="Auto, Auto, *">
+        <!-- Header -->
+        <Grid Grid.Row="0" Padding="10" BackgroundColor="#007AFF">
+            <!-- Header Content: Back button, Title, Company Name -->
+            <Label Text="Categories Name" TextColor="White" FontSize="Large" HorizontalOptions="Center" />
+            <Grid HorizontalOptions="End">
+                <ImageButton Source="cart_icon.png" WidthRequest="30" HeightRequest="30" />
+                <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
+                        IsVisible="{Binding IsCartVisible}"
+                        HorizontalOptions="End" VerticalOptions="Start"
+                        TranslationX="5" TranslationY="-5">
+                    <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- BONUS: Search Bar -->
+        <SearchBar Grid.Row="1" Placeholder="Search..." Text="{Binding SearchText}" SearchCommand="{Binding SearchProductsCommand}" />
+
+        <!-- Product List -->
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Products}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <Border Stroke="LightGray" StrokeThickness="1" Margin="10" Padding="10">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <Image Grid.Column="0" Source="{Binding Images[0].Src}" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" />
+
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0">
+                                <Label Text="{Binding Sku}" FontSize="12" TextColor="Gray"/>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding Price, StringFormat='RM {0}'}" />
+                                <Label Text="{Binding StockQuantity, StringFormat='{0} in stock'}" TextColor="Green" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="2" VerticalOptions="Center">
+                                <!-- BONUS: UOM Picker -->
+                                <Picker ItemsSource="{Binding Variations}"
+                                        ItemDisplayBinding="{Binding Attributes[0].Option}"
+                                        WidthRequest="100"/>
+                                <!-- Quantity Stepper -->
+                                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                                    <Button Text="-" WidthRequest="40" />
+                                    <Label Text="{Binding QuantityInCart}" VerticalOptions="Center" Padding="10,0" />
+                                    <Button Text="+" WidthRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=AddToCartCommand}" CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
