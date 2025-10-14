@@ -51,6 +51,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = BO_Mobile.Resources.Styles
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/kongf/Desktop/BoostOrder/BO_Mobile/Views/CartPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = BO_Mobile.Views.CartPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CartPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CartPage.xaml
+
 [C:/Users/kongf/Desktop/BoostOrder/BO_Mobile/Views/CatalogPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = BO_Mobile.Views.CatalogPage.xaml

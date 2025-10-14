@@ -3,6 +3,7 @@ using BO_Mobile.Models;
 using BO_Mobile.ViewModels;
 using BO_Mobile.Views;
 using BO_Mobile.Services;
+using FFImageLoading.Maui;
 
 
 namespace BO_Mobile;
@@ -14,6 +15,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseFFImageLoading() // Image Caching library
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -23,7 +25,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ProductService>();
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddTransient<CatalogViewModel>();
-        builder.Services.AddTransient<CatalogPage>();	
+		builder.Services.AddTransient<CatalogPage>();
+		builder.Services.AddSingleton<CartService>();
+		builder.Services.AddTransient<CartViewModel>();
+   		builder.Services.AddTransient<CartPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

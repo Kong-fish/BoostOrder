@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:BO_Mobile.ViewModels"
+             xmlns:models="clr-namespace:BO_Mobile.Models"
+             x:Class="BO_Mobile.Views.CartPage"
+             x:DataType="viewModels:CartViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Custom Header -->
+        <Grid Grid.Row="0" Padding="10" BackgroundColor="#007AFF" ColumnDefinitions="Auto, *, Auto">
+            <ImageButton Source="back_arrow.png" 
+                         Grid.Column="0"
+                         VerticalOptions="Center" 
+                         Command="{Binding GoBackCommand}"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                        />
+            
+            <Label Text="Cart" 
+                   TextColor="White" 
+                   FontSize="Large" 
+                   Grid.Column="1"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+                   
+            <ImageButton Source="threedots.png" 
+                         Grid.Column="2"
+                         VerticalOptions="Center"
+                         HorizontalOptions="End">
+                 <ImageButton.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClearCartCommand}" />
+                </ImageButton.GestureRecognizers>
+            </ImageButton>
+        </Grid>
+
+        <!-- Main list of cart items -->
+        <CollectionView ItemsSource="{Binding Items}" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:CartItem">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CartViewModel}}, Path=RemoveItemCommand}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        
+                        <Grid Padding="10" ColumnDefinitions="*, Auto">
+                            <StackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding Sku}" FontSize="Small" />
+                                <Label Text="{Binding Price, StringFormat='RM {0:F2}'}" />
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Spacing="10">
+                                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                    <Button Text="-"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CartViewModel}}, Path=DecreaseQuantityCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                            
+                                    <Label Text="{Binding Quantity}" VerticalOptions="Center" FontSize="16" />
+                                    
+                                    <Button Text="+"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CartViewModel}}, Path=IncreaseQuantityCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
+                                
+                                <Label Text="{Binding Total, StringFormat='Total: RM {0:F2}'}" HorizontalOptions="End" />
+                            </StackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Footer with Totals and Checkout Button -->
+        <Border Grid.Row="2" 
+                Padding="15" 
+                Stroke="LightGray"
+                StrokeThickness="1">
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="0,-5" Radius="10" Opacity="0.1" />
+            </Border.Shadow>
+             <Grid ColumnDefinitions="*, Auto">
+                <StackLayout Grid.Column="0" VerticalOptions="Center">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Total (" />
+                                <Span Text="{Binding TotalItemCount}" />
+                                <Span Text=")" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!-- FIX: Ensure FontWeight is on the Label, not a parent container -->
+                    <Label Text="{Binding CartTotal, StringFormat='RM {0:F2}'}" FontSize="Large" FontAttributes="Bold" />
+                </StackLayout>
+                <Button Grid.Column="1" Text="Checkout" BackgroundColor="#007AFF" TextColor="White" CornerRadius="20" Padding="30,10" VerticalOptions="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
+

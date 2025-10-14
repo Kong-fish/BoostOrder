@@ -4,7 +4,52 @@
         <name>BO_Mobile</name>
     </assembly>
     <members>
+        <member name="T:BO_Mobile.Models.CartItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:BO_Mobile.Models.CartItem.Quantity">
+            <inheritdoc cref="F:BO_Mobile.Models.CartItem._quantity"/>
+        </member>
+        <member name="T:BO_Mobile.ViewModels.CartViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.TotalItemCount">
+            <inheritdoc cref="F:BO_Mobile.ViewModels.CartViewModel._totalItemCount"/>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.CartTotal">
+            <inheritdoc cref="F:BO_Mobile.ViewModels.CartViewModel._cartTotal"/>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CartViewModel.increaseQuantityCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CartViewModel.IncreaseQuantityCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.IncreaseQuantityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CartViewModel.IncreaseQuantity(BO_Mobile.Models.CartItem)"/>.</summary>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CartViewModel.decreaseQuantityCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CartViewModel.DecreaseQuantityCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.DecreaseQuantityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CartViewModel.DecreaseQuantity(BO_Mobile.Models.CartItem)"/>.</summary>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CartViewModel.removeItemCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CartViewModel.RemoveItemCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.RemoveItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CartViewModel.RemoveItem(BO_Mobile.Models.CartItem)"/>.</summary>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CartViewModel.clearCartCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CartViewModel.ClearCartCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CartViewModel.ClearCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CartViewModel.ClearCart"/>.</summary>
+        </member>
         <member name="T:BO_Mobile.ViewModels.CatalogViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
         </member>
@@ -21,6 +66,18 @@
             <summary>Executes the logic for when <see cref="P:BO_Mobile.ViewModels.CatalogViewModel.SearchText"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:BO_Mobile.ViewModels.CatalogViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CatalogViewModel.addToCartCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CatalogViewModel.AddToCartCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CatalogViewModel.AddToCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CatalogViewModel.AddToCart(BO_Mobile.Models.Product)"/>.</summary>
+        </member>
+        <member name="F:BO_Mobile.ViewModels.CatalogViewModel.goToCartCommand">
+            <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CatalogViewModel.GoToCartCommand"/>.</summary>
+        </member>
+        <member name="P:BO_Mobile.ViewModels.CatalogViewModel.GoToCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:BO_Mobile.ViewModels.CatalogViewModel.GoToCartAsync"/>.</summary>
         </member>
         <member name="F:BO_Mobile.ViewModels.CatalogViewModel.getProductsCommand">
             <summary>The backing field for <see cref="P:BO_Mobile.ViewModels.CatalogViewModel.GetProductsCommand"/>.</summary>
@@ -40,6 +97,15 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Quantity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Quantity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CartTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CartTotal" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Products">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Products" generated properties.</summary>
         </member>
@@ -57,6 +123,15 @@
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Quantity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Quantity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CartTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CartTotal" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Products">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Products" generated properties.</summary>
