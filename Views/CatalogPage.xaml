@@ -11,7 +11,12 @@
     <Grid RowDefinitions="Auto, Auto, *">
         <!-- 1. Custom Header -->
         <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15" ColumnDefinitions="Auto, *, Auto">
-            <ImageButton Source="back_arrow.png" VerticalOptions="Center" HeightRequest="24" WidthRequest="24" />
+            <Button Text="&lt;" 
+                    TextColor="White"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center" />
             <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
             <HorizontalStackLayout Grid.Column="2" Spacing="10" VerticalOptions="Center">
                  <Label Text="Company Name" TextColor="White" VerticalOptions="Center" />
@@ -24,7 +29,10 @@
         
         <!-- 2. Search Bar Area with Cart Icon & Badge -->
         <Grid Grid.Row="1" Margin="10,5">
-            <SearchBar Placeholder="Search..." Text="{Binding SearchText}" />
+            <SearchBar Placeholder="Search..." 
+                       Text="{Binding SearchText}" 
+                       CancelButtonColor="Transparent"/>
+
             <Grid HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0">
                  <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
                  <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
@@ -57,12 +65,30 @@
                                     <Label Text="{Binding DisplayPrice, StringFormat='RM {0}'}" FontAttributes="Bold" FontSize="14" />
                                 </VerticalStackLayout>
                                 
-                                <Grid Grid.Column="1" Grid.Row="1" ColumnDefinitions="*, Auto" VerticalOptions="End">
-                                    <Picker Grid.Column="0"
-                                            ItemsSource="{Binding Variations}"
-                                            SelectedItem="{Binding SelectedVariation}"
-                                            ItemDisplayBinding="{Binding Uom}"
-                                            />
+                                <!-- THE FIX: Updated UI to match the screenshot -->
+                                <Grid Grid.Column="1" Grid.Row="1" ColumnDefinitions="*, Auto" VerticalOptions="End" ColumnSpacing="10">
+                                    <Border Grid.Column="0" Stroke="LightGray" StrokeThickness="1" Padding="0" HeightRequest="45">
+                                        <Grid ColumnDefinitions="Auto, *">
+                                            <Picker Grid.Column="0"
+                                                    ItemsSource="{Binding Variations}"
+                                                    SelectedItem="{Binding SelectedVariation}"
+                                                    ItemDisplayBinding="{Binding Uom}"
+                                                    WidthRequest="80"
+                                                    VerticalOptions="Center"/>
+                                            
+                                            <HorizontalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
+                                                <Button Text="-" 
+                                                        WidthRequest="40"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=DecrementQuantityCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                                <Label Text="{Binding QuantityToAdd}" VerticalOptions="Center" FontSize="16"/>
+                                                <Button Text="+" 
+                                                        WidthRequest="40"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=IncrementQuantityCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </Border>
                                     
                                     <Button Grid.Column="1" 
                                             Text="+" 

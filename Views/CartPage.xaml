@@ -10,13 +10,12 @@
     <Grid RowDefinitions="Auto, *, Auto">
         <!-- Custom Header -->
         <Grid Grid.Row="0" Padding="10" BackgroundColor="#007AFF" ColumnDefinitions="Auto, *, Auto">
-            <ImageButton Source="back_arrow.png" 
-                         Grid.Column="0"
-                         VerticalOptions="Center" 
-                         Command="{Binding GoBackCommand}"
-                         WidthRequest="20"
-                         HeightRequest="20"
-                        />
+            <Button Text="&lt;" 
+                    TextColor="White"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center" />
             
             <Label Text="Cart" 
                    TextColor="White" 

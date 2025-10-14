@@ -54,7 +54,6 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable-mdpi\dotnet_bot.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\cart_icon.png
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\back_arrow.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\threedots.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\mauiimage.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\mauiimage.outputs
