@@ -20,7 +20,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
+		// Dependency Injection: allow MVVM 
         // Services
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<ProductService>();

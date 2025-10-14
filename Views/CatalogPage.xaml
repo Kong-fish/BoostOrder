@@ -11,37 +11,44 @@
     <Grid RowDefinitions="Auto, Auto, *">
         <!-- 1. Custom Header -->
         <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15" ColumnDefinitions="Auto, *, Auto">
-            <Button Text="&lt;" 
-                    TextColor="White"
-                    FontSize="24"
-                    FontAttributes="Bold"
-                    BackgroundColor="Transparent"
-                    VerticalOptions="Center" />
-            <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Button Text="&lt;" TextColor="White" FontSize="24" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" />
+            <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
             <HorizontalStackLayout Grid.Column="2" Spacing="10" VerticalOptions="Center">
-                 <Label Text="Company Name" TextColor="White" VerticalOptions="Center" />
+                 <Label Text="Company Name" TextColor="White" FontSize="12" VerticalOptions="Center" />
                 <Border StrokeShape="RoundRectangle 50" BackgroundColor="White" HeightRequest="34" WidthRequest="34" VerticalOptions="Center">
                     <Label Text="CN" TextColor="#007AFF" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Border>
-                <ImageButton Source="threedots.png" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
+                <Image Source="threedots.png" 
+                        VerticalOptions="Center" 
+                        HeightRequest="24" 
+                        WidthRequest="24">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding MenuCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
             </HorizontalStackLayout>
         </Grid>
         
         <!-- 2. Search Bar Area with Cart Icon & Badge -->
         <Grid Grid.Row="1" Margin="10,5">
-            <SearchBar Placeholder="Search..." 
-                       Text="{Binding SearchText}" 
-                       CancelButtonColor="Transparent"/>
+           <Border Stroke="LightGray" StrokeThickness="1" StrokeShape="RoundRectangle 5">
+                <Grid ColumnDefinitions="*, Auto">
+                    <SearchBar Grid.Column="0" 
+                               Placeholder="Search..." 
+                               Text="{Binding SearchText}" 
+                               CancelButtonColor="Transparent"/>
 
-            <Grid HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0">
-                 <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
-                 <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
-                         IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}"
-                         HorizontalOptions="End" VerticalOptions="Start"
-                         TranslationX="5" TranslationY="-5">
-                      <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
-                 </Border>
-            </Grid>
+                    <Grid Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0">
+                         <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
+                         <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
+                                 IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}"
+                                 HorizontalOptions="End" VerticalOptions="Start"
+                                 TranslationX="5" TranslationY="-5">
+                              <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
+                         </Border>
+                    </Grid>
+                </Grid>
+            </Border>
         </Grid>
 
         <!-- 3. Main Content Area -->
