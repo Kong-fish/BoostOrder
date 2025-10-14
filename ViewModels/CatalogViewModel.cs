@@ -17,14 +17,16 @@ public partial class CatalogViewModel : ObservableObject
     private ObservableCollection<Product> _products;
 
     [ObservableProperty]
-    private string _searchText = string.Empty; // FIX: Initialize to a non-null value
+    private string _searchText = string.Empty;
+
+    [ObservableProperty]
+    private int _cartItemCount;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool _isBusy;
-    
-    public bool IsNotBusy => !IsBusy;
 
+    public bool IsNotBusy => !IsBusy;
     private List<Product> _allProducts = new();
 
     public CatalogViewModel(ProductService productService, DatabaseService databaseService, CartService cartService)
@@ -34,18 +36,28 @@ public partial class CatalogViewModel : ObservableObject
         _cartService = cartService;
         _products = new ObservableCollection<Product>();
 
+        _cartService.CartChanged += UpdateCartBadge;
+        
         GetProductsCommand.Execute(null);
+        UpdateCartBadge();
     }
 
+    private void UpdateCartBadge()
+    {
+        CartItemCount = _cartService.ItemCount;
+    }
+    
+    // --- THIS IS THE FIX: A simple, robust AddToCart command ---
     [RelayCommand]
     private void AddToCart(Product product)
     {
-        if (product == null)
+        if (product == null || product.SelectedVariation == null)
             return;
 
-        _cartService.AddToCart(product);
+        _cartService.AddToCart(product, product.SelectedVariation);
+        Shell.Current.DisplayAlert("Added to Cart", $"1 x {product.Name} ({product.SelectedVariation.Uom}) was added.", "OK");
     }
-
+    
     [RelayCommand]
     private async Task GoToCartAsync()
     {
@@ -55,8 +67,7 @@ public partial class CatalogViewModel : ObservableObject
     [RelayCommand]
     private async Task GetProductsAsync()
     {
-        if (IsBusy)
-            return;
+        if (IsBusy) return;
         try
         {
             IsBusy = true;
@@ -64,6 +75,7 @@ public partial class CatalogViewModel : ObservableObject
             {
                 var apiProducts = await _productService.GetProductsAsync();
                 _allProducts = apiProducts.Where(p => p.Type == "variable").ToList();
+                _allProducts.ForEach(p => p.SetDefaultVariation());
                 await _databaseService.SaveProductsAsync(_allProducts);
             }
             else
@@ -81,7 +93,7 @@ public partial class CatalogViewModel : ObservableObject
             IsBusy = false;
         }
     }
-
+    
     partial void OnSearchTextChanged(string value)
     {
         FilterProducts();

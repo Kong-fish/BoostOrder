@@ -6,74 +6,79 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              x:Class="BO_Mobile.Views.CatalogPage"
              x:DataType="viewModels:CatalogViewModel"
-             Title="Catalog">
+             Shell.NavBarIsVisible="False">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cart"
-                     IconImageSource="cart_icon.png"
-                     Command="{Binding GoToCartCommand}" />
-    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="Auto, Auto, *">
+        <!-- 1. Custom Header -->
+        <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15" ColumnDefinitions="Auto, *, Auto">
+            <ImageButton Source="back_arrow.png" VerticalOptions="Center" HeightRequest="24" WidthRequest="24" />
+            <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+            <HorizontalStackLayout Grid.Column="2" Spacing="10" VerticalOptions="Center">
+                 <Label Text="Company Name" TextColor="White" VerticalOptions="Center" />
+                <Border StrokeShape="RoundRectangle 50" BackgroundColor="White" HeightRequest="34" WidthRequest="34" VerticalOptions="Center">
+                    <Label Text="CN" TextColor="#007AFF" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+                <ImageButton Source="threedots.png" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
+            </HorizontalStackLayout>
+        </Grid>
+        
+        <!-- 2. Search Bar Area with Cart Icon & Badge -->
+        <Grid Grid.Row="1" Margin="10,5">
+            <SearchBar Placeholder="Search..." Text="{Binding SearchText}" />
+            <Grid HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0">
+                 <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
+                 <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
+                         IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}"
+                         HorizontalOptions="End" VerticalOptions="Start"
+                         TranslationX="5" TranslationY="-5">
+                      <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
+                 </Border>
+            </Grid>
+        </Grid>
 
-    <Grid RowDefinitions="Auto, *">
-        <SearchBar Grid.Row="0"
-                   Placeholder="Search..."
-                   Text="{Binding SearchText}"
-                   Margin="10"/>
-
-        <Grid Grid.Row="1">
-            <CollectionView ItemsSource="{Binding Products}"
-                            IsVisible="{Binding IsNotBusy}">
+        <!-- 3. Main Content Area -->
+        <Grid Grid.Row="2">
+            <CollectionView ItemsSource="{Binding Products}" IsVisible="{Binding IsNotBusy}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Product">
                         <Border Stroke="LightGray" StrokeThickness="1" Margin="10" Padding="10">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="5" />
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.2" />
-                            </Border.Shadow>
-                            <Grid ColumnDefinitions="100, *, Auto" ColumnSpacing="10">
+                             <Grid ColumnDefinitions="100, *" RowDefinitions="Auto, Auto" RowSpacing="10">
+                                <ffimageloading:CachedImage Grid.Column="0" Grid.RowSpan="2" 
+                                                            Source="{Binding ImageUrl}" 
+                                                            ErrorPlaceholder="no_image.png" 
+                                                            Aspect="AspectFill" 
+                                                            HeightRequest="100" 
+                                                            WidthRequest="100" 
+                                                            CacheDuration="30" />
                                 
-                                <ffimageloading:CachedImage
-                                    Grid.Column="0"
-                                    Source="{Binding ImageUrl}"
-                                    Aspect="AspectFill"
-                                    HeightRequest="100"
-                                    WidthRequest="100"
-                                    LoadingPlaceholder="placeholder.png"
-                                    ErrorPlaceholder="placeholder.png"
-                                    CacheDuration="30" />
-
-                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <VerticalStackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="Start">
                                     <Label Text="{Binding Sku}" FontSize="12" TextColor="Gray"/>
                                     <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
-                                    <Label Text="{Binding DisplayPrice, StringFormat='RM {0}'}" FontSize="14" />
-                                    <Label TextColor="Green" FontSize="12">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Variations[0].StockQuantity, FallbackValue=0}" />
-                                                <Span Text=" in stock" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Text="{Binding DisplayPrice, StringFormat='RM {0}'}" FontAttributes="Bold" FontSize="14" />
                                 </VerticalStackLayout>
-
-                                <Button Grid.Column="2"
-                                        Text="+"
-                                        FontSize="Large"
-                                        VerticalOptions="Center"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=AddToCartCommand}"
-                                        CommandParameter="{Binding .}"/>
+                                
+                                <Grid Grid.Column="1" Grid.Row="1" ColumnDefinitions="*, Auto" VerticalOptions="End">
+                                    <Picker Grid.Column="0"
+                                            ItemsSource="{Binding Variations}"
+                                            SelectedItem="{Binding SelectedVariation}"
+                                            ItemDisplayBinding="{Binding Uom}"
+                                            />
+                                    
+                                    <Button Grid.Column="1" 
+                                            Text="+" 
+                                            FontSize="Large"
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            CornerRadius="25"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=AddToCartCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                </Grid>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <ActivityIndicator IsRunning="{Binding IsBusy}"
-                               IsVisible="{Binding IsBusy}"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" />
         </Grid>
     </Grid>
 </ContentPage>

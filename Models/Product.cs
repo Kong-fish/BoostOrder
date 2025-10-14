@@ -1,8 +1,10 @@
+using System.Diagnostics;
 using System.Text.Json.Serialization;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BO_Mobile.Models;
 
-public class Product
+public partial class Product : ObservableObject
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -25,32 +27,54 @@ public class Product
     [JsonPropertyName("variations")]
     public List<Variation> Variations { get; set; }
 
-    // --- Helper Properties for easy UI Binding ---
+    // --- THIS IS THE FIX ---
+    // Changed from QuantityToAdd and initialized to 0.
+    // This property will now reflect the actual quantity of this item in the cart.
+    [ObservableProperty]
+    private int _quantityInCart = 0;
 
-    // This gets the price from the first variation, which is what we want to display.
-    public string DisplayPrice => Variations?.FirstOrDefault()?.RegularPrice ?? "0.00";
+    [ObservableProperty]
+    private Variation _selectedVariation;
 
-    // This gets the URL from the first image in the list.
-    public string ImageUrl => Images?.FirstOrDefault()?.Src;
+    public string DisplayPrice => SelectedVariation?.RegularPrice ?? "0.00";
+    
+    public string ImageUrl
+    {
+        get
+        {
+            var url = Images?.FirstOrDefault()?.Src;
+            Debug.WriteLine($"[Image URL] For product '{Name}': {url ?? "NULL"}");
+            return url;
+        }
+    }
+
+    public void SetDefaultVariation()
+    {
+        SelectedVariation = Variations?.FirstOrDefault();
+    }
 }
 
-// Helper class to match the "images" array in the JSON
 public class Image
 {
     [JsonPropertyName("src")]
     public string Src { get; set; }
 }
 
-// Helper class to match the "variations" array in the JSON
 public class Variation
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
+
+    [JsonPropertyName("sku")]
+    public string Sku { get; set; }
 
     [JsonPropertyName("regular_price")]
     public string RegularPrice { get; set; }
 
     [JsonPropertyName("stock_quantity")]
     public int? StockQuantity { get; set; }
+
+    [JsonPropertyName("uom")]
+    public string Uom { get; set; }
 }
 

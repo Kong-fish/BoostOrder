@@ -14,8 +14,8 @@
                          Grid.Column="0"
                          VerticalOptions="Center" 
                          Command="{Binding GoBackCommand}"
-                         WidthRequest="30"
-                         HeightRequest="30"
+                         WidthRequest="20"
+                         HeightRequest="20"
                         />
             
             <Label Text="Cart" 
@@ -28,7 +28,9 @@
             <ImageButton Source="threedots.png" 
                          Grid.Column="2"
                          VerticalOptions="Center"
-                         HorizontalOptions="End">
+                         HorizontalOptions="End"
+                         WidthRequest="20"
+                         HeightRequest="20">
                  <ImageButton.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ClearCartCommand}" />
                 </ImageButton.GestureRecognizers>

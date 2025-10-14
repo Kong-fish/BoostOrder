@@ -10,6 +10,7 @@
       "BO_Mobile/1.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.0",
+          "FFImageLoading.Maui": "1.3.2",
           "Microsoft.Extensions.Logging.Debug": "9.0.5",
           "Microsoft.Maui.Controls": "9.0.82",
           "sqlite-net-pcl": "1.9.172",
@@ -37,6 +38,43 @@
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
             "fileVersion": "8.4.0.1"
+          }
+        }
+      },
+      "ExCSS/4.3.0": {
+        "runtime": {
+          "lib/net8.0/ExCSS.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
+          }
+        }
+      },
+      "FFImageLoading.Maui/1.3.2": {
+        "dependencies": {
+          "Svg.Skia": "3.0.4"
+        },
+        "runtime": {
+          "lib/net9.0-windows10.0.19041/FFImageLoading.Maui.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "HarfBuzzSharp/8.3.0.1": {
+        "dependencies": {
+          "HarfBuzzSharp.NativeAssets.Win32": "8.3.0.1"
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.19041/HarfBuzzSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "8.3.0.1"
+          }
+        }
+      },
+      "HarfBuzzSharp.NativeAssets.Win32/8.3.0.1": {
+        "native": {
+          "runtimes/win-x64/native/libHarfBuzzSharp.dll": {
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -491,6 +529,44 @@
           }
         }
       },
+      "ShimSkiaSharp/3.0.4": {
+        "runtime": {
+          "lib/net8.0/ShimSkiaSharp.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        }
+      },
+      "SkiaSharp/3.116.1": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "3.116.1"
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.19041/SkiaSharp.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
+          }
+        }
+      },
+      "SkiaSharp.HarfBuzz/3.116.1": {
+        "dependencies": {
+          "HarfBuzzSharp": "8.3.0.1",
+          "SkiaSharp": "3.116.1"
+        },
+        "runtime": {
+          "lib/net8.0/SkiaSharp.HarfBuzz.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.116.1": {
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "dependencies": {
           "SQLitePCLRaw.bundle_green": "2.1.2"
@@ -543,6 +619,43 @@
           }
         }
       },
+      "Svg.Custom/3.0.4": {
+        "dependencies": {
+          "ExCSS": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Custom.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        }
+      },
+      "Svg.Model/3.0.4": {
+        "dependencies": {
+          "ShimSkiaSharp": "3.0.4",
+          "Svg.Custom": "3.0.4"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Model.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        }
+      },
+      "Svg.Skia/3.0.4": {
+        "dependencies": {
+          "SkiaSharp": "3.116.1",
+          "SkiaSharp.HarfBuzz": "3.116.1",
+          "Svg.Custom": "3.0.4",
+          "Svg.Model": "3.0.4"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Skia.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        }
+      },
       "System.Memory/4.5.3": {},
       "Microsoft.Web.WebView2.Core.Projection/1.0.3179.45": {
         "runtime": {
@@ -571,6 +684,34 @@
       "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    },
+    "ExCSS/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LyVZ925Cl6Z4TJrbogt3+DkvanYWZcJs0tzKg8lWHAY9PgniVMluNy+l5vXDMmvt5gBgekULasEnUqVAavPuZw==",
+      "path": "excss/4.3.0",
+      "hashPath": "excss.4.3.0.nupkg.sha512"
+    },
+    "FFImageLoading.Maui/1.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-glLZrCmP+bcBtxagFo1S07VBLXv2zI8P73TgrGtu8836oF9oHNWFf0Ht10AKozzHgQdP/15yvc7WlHeY2VjUkg==",
+      "path": "ffimageloading.maui/1.3.2",
+      "hashPath": "ffimageloading.maui.1.3.2.nupkg.sha512"
+    },
+    "HarfBuzzSharp/8.3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rwLpl+W6uqu0DuvzqNhTMuFcXfy1Vc0uq0YXgPEmtTSfeUSAye1FcARrm2YIPOSiCBwBOGu3cLvMX5Fp6OKe2g==",
+      "path": "harfbuzzsharp/8.3.0.1",
+      "hashPath": "harfbuzzsharp.8.3.0.1.nupkg.sha512"
+    },
+    "HarfBuzzSharp.NativeAssets.Win32/8.3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ow0DtGEUjo65qhiI22of7qiVbN1xDFsZ5P5xJljRmGZ5WSxNy+1batLNJFGxahqhB1MTHYV8kAXf0GqC8WaevQ==",
+      "path": "harfbuzzsharp.nativeassets.win32/8.3.0.1",
+      "hashPath": "harfbuzzsharp.nativeassets.win32.8.3.0.1.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/9.0.5": {
       "type": "package",
@@ -733,6 +874,34 @@
       "path": "microsoft.windowsappsdk/1.7.250513003",
       "hashPath": "microsoft.windowsappsdk.1.7.250513003.nupkg.sha512"
     },
+    "ShimSkiaSharp/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZJ/kF8PvBRRgc6EVi4PCds8VzvDwurwY/JQ7lKm/m6mQu9rHrRP8W3krWxcEcUUX2zj7E3Ddrd/0Ci5RE5QIqA==",
+      "path": "shimskiasharp/3.0.4",
+      "hashPath": "shimskiasharp.3.0.4.nupkg.sha512"
+    },
+    "SkiaSharp/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DNDwbRjP+aMo27dV2h/uHCVTcWubWWxHnPLiePNyl24f4Pv43mQ8AQQeseOrKR+J3AOCEs6t0sUjo0aa3j3RWQ==",
+      "path": "skiasharp/3.116.1",
+      "hashPath": "skiasharp.3.116.1.nupkg.sha512"
+    },
+    "SkiaSharp.HarfBuzz/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ibDG1+quN86vBd9ztjDAC9wnvS1nRZ6ydTUOSod4NsRHWdLLGzWYn1IOF4Cg9iJh5cQHdpzhUZBQE0JMKznrow==",
+      "path": "skiasharp.harfbuzz/3.116.1",
+      "hashPath": "skiasharp.harfbuzz.3.116.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dRQ75MCI8oz6zAs2Y1w6pq6ARs4MhdNG+gf3doOxOxdnueDXffQLGQIxON54GDoxc0WjKOoHMKBR4DhaduwwQw==",
+      "path": "skiasharp.nativeassets.win32/3.116.1",
+      "hashPath": "skiasharp.nativeassets.win32.3.116.1.nupkg.sha512"
+    },
     "sqlite-net-pcl/1.9.172": {
       "type": "package",
       "serviceable": true,
@@ -767,6 +936,27 @@
       "sha512": "sha512-lxCZarZdvAsMl2zw9bXHrXK6RxVhB4b23iTFhCOdHFhxfbsxLxWf+ocvswJwR/9Wh/E//ddMi+wJGqUKV7VwoA==",
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.2",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512"
+    },
+    "Svg.Custom/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dhWPtdtrY1wWcV0d4IQbUI1QJy+UUX9A/W5MMOKlhI4bjV8gL7Jz8FfBFLFzMUAn6+wRc1LywloWvG/OD5Q1ZQ==",
+      "path": "svg.custom/3.0.4",
+      "hashPath": "svg.custom.3.0.4.nupkg.sha512"
+    },
+    "Svg.Model/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2uGL85LpefYnAVB5n0+SEJVMaOFG/RJ96fK4/0mTZCNroaEdbXj83kD9LjusQl2fL1nJncMT6jIGM4v5AFz5uw==",
+      "path": "svg.model/3.0.4",
+      "hashPath": "svg.model.3.0.4.nupkg.sha512"
+    },
+    "Svg.Skia/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9xyyF6FCKMYN1ykw+jc1Eco/zHnEF1RLwoLxn3liDqxzM0hGQlNlxrU4AJ29ZP3C73gIrXPwTSxH4Ap/TqQrxw==",
+      "path": "svg.skia/3.0.4",
+      "hashPath": "svg.skia.3.0.4.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

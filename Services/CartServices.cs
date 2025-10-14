@@ -5,36 +5,56 @@ namespace BO_Mobile.Services;
 
 public class CartService
 {
-    // The list of items in the cart. ObservableCollection will notify the UI of changes.
     public ObservableCollection<CartItem> Items { get; } = new();
 
-    // A property to easily get the total number of items for the badge
-    public int ItemCount => Items.Sum(item => item.Quantity);
+    public event Action CartChanged;
 
-    public void AddToCart(Product product)
+    public int ItemCount => Items.Count;
+
+    public CartService()
     {
-        // Find if the item already exists in the cart
-        var existingItem = Items.FirstOrDefault(item => item.ProductId == product.Id);
+        Items.CollectionChanged += (s, e) => NotifyStateChanged();
+    }
+
+    // --- THIS IS THE FIX: A simplified, more robust AddToCart method ---
+    /// <summary>
+    /// Adds a product with a specific variation to the cart. If the item already
+    /// exists, its quantity is incremented by one.
+    /// </summary>
+    public void AddToCart(Product product, Variation selectedVariation)
+    {
+        if (product == null || selectedVariation == null)
+            return;
+
+        var existingItem = Items.FirstOrDefault(item => item.VariationId == selectedVariation.Id);
 
         if (existingItem != null)
         {
-            // If it exists, just increase the quantity
+            // If the item already exists, just increase its quantity by 1.
             existingItem.Quantity++;
+            NotifyStateChanged(); 
         }
         else
         {
-            // If it's a new item, add it to the cart
-            decimal.TryParse(product.DisplayPrice, out var price);
+            // If it's a new item, add it to the cart with a quantity of 1.
+            decimal.TryParse(selectedVariation.RegularPrice, out var price);
             Items.Add(new CartItem
             {
                 ProductId = product.Id,
+                VariationId = selectedVariation.Id,
                 Name = product.Name,
-                Sku = product.Sku,
+                Sku = selectedVariation.Sku,
                 Price = price,
                 ImageUrl = product.ImageUrl,
-                Quantity = 1
+                Quantity = 1 // Always start with quantity 1
             });
+            // The CollectionChanged event will automatically call NotifyStateChanged
         }
+    }
+
+    public void NotifyStateChanged()
+    {
+        CartChanged?.Invoke();
     }
 }
 

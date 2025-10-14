@@ -2,6 +2,9 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccata
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\BO_Mobile.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\BO_Mobile.pdb
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\CommunityToolkit.Mvvm.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\ExCSS.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\FFImageLoading.Maui.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\HarfBuzzSharp.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Extensions.Configuration.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Extensions.DependencyInjection.dll
@@ -16,10 +19,16 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccata
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Essentials.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Graphics.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\ShimSkiaSharp.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SkiaSharp.HarfBuzz.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SQLite-net.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.batteries_v2.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.core.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Svg.Custom.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Svg.Model.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Svg.Skia.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\ar\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\ca\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\cs\Microsoft.Maui.Controls.resources.dll
@@ -54,6 +63,8 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccata
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\zh-HK\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\zh-Hans\Microsoft.Maui.Controls.resources.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\zh-Hant\Microsoft.Maui.Controls.resources.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libHarfBuzzSharp.framework.zip
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libSkiaSharp.framework.zip
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\libe_sqlite3.dylib
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.CSharp.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\Microsoft.VisualBasic.Core.dll
@@ -260,6 +271,9 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccata
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\dotnet_bot@3x.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\dotnet_bot@2x.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\dotnet_bot.png
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\back_arrow.png
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\cart_icon.png
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\threedots.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon76x76@2x.png

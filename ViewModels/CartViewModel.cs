@@ -22,15 +22,13 @@ public partial class CartViewModel : ObservableObject
     {
         _cartService = cartService;
         _cartService.Items.CollectionChanged += (s, e) => UpdateCartTotals();
-        
-        // Also update totals when a property (like Quantity) on an item changes
-        foreach(var item in _cartService.Items)
-        {
-            item.PropertyChanged += (s, e) => UpdateCartTotals();
-        }
     }
 
-    // --- FIX: Replaced UpdateQuantity with two separate commands ---
+    [RelayCommand]
+    private async Task GoBackAsync()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 
     [RelayCommand]
     private void IncreaseQuantity(CartItem item)
@@ -44,10 +42,14 @@ public partial class CartViewModel : ObservableObject
     private void DecreaseQuantity(CartItem item)
     {
         if (item == null) return;
-        item.Quantity--;
-
-        if (item.Quantity <= 0)
+        
+        if (item.Quantity > 1)
         {
+            item.Quantity--;
+        }
+        else
+        {
+            // If quantity is 1, decreasing it removes the item.
             RemoveItem(item);
         }
         UpdateCartTotals();
@@ -58,17 +60,17 @@ public partial class CartViewModel : ObservableObject
     {
         if (item == null) return;
         Items.Remove(item);
-        // No need to call UpdateCartTotals here, the CollectionChanged event will handle it.
+        // Note: UpdateCartTotals is already called by the CollectionChanged event.
     }
 
     [RelayCommand]
     private async Task ClearCart()
     {
-        bool confirm = await Shell.Current.DisplayAlert("Clear Cart", "Are you sure you want to remove all items from your cart?", "Yes", "No");
+        bool confirm = await Shell.Current.DisplayAlert("Clear Cart", "Are you sure you want to remove all items?", "Yes", "No");
         if (confirm)
         {
             Items.Clear();
-            // No need to call UpdateCartTotals here, the CollectionChanged event will handle it.
+            // Note: UpdateCartTotals is already called by the CollectionChanged event.
         }
     }
 
@@ -76,6 +78,11 @@ public partial class CartViewModel : ObservableObject
     {
         TotalItemCount = Items.Sum(i => i.Quantity);
         CartTotal = Items.Sum(i => i.Total);
+        
+        // --- THIS IS THE FIX ---
+        // Explicitly tell the CartService to notify all subscribers (like the CatalogViewModel)
+        // that a change has occurred, so the badge can update.
+        _cartService.NotifyStateChanged();
     }
 }
 
