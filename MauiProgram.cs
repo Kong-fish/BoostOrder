@@ -2,10 +2,11 @@
 using BO_Mobile.Services;
 using BO_Mobile.ViewModels;
 using BO_Mobile.Views;
-using FFImageLoading.Maui;
+using FFImageLoading.Maui; // For product image caching library
 
 namespace BO_Mobile;
 
+//
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -13,7 +14,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseFFImageLoading()
+            .UseFFImageLoading() //Image Caching 
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -27,7 +28,6 @@ public static class MauiProgram
         
         // ViewModels
         builder.Services.AddTransient<CatalogViewModel>();
-        // --- THIS IS THE FIX ---
         // Changed from AddTransient to AddSingleton for the CartViewModel
         builder.Services.AddSingleton<CartViewModel>();
         // -----------------------
