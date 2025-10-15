@@ -7,6 +7,7 @@
     Shell.FlyoutBehavior="Disabled"
     Title="BO_Mobile">
 
+    <!--Main Page-->
     <ShellContent
         Title="Catalog"
         ContentTemplate="{DataTemplate local:CatalogPage}"

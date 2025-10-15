@@ -10,22 +10,22 @@ public partial class Product : ObservableObject
     public int Id { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [JsonPropertyName("sku")]
-    public string Sku { get; set; }
+    public required string Sku { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public required string Type { get; set; }
 
     [JsonPropertyName("in_stock")]
     public bool InStock { get; set; }
 
     [JsonPropertyName("images")]
-    public List<Image> Images { get; set; }
+    public required List<Image> Images { get; set; }
 
     [JsonPropertyName("variations")]
-    public List<Variation> Variations { get; set; }
+    public required List<Variation> Variations { get; set; }
 
     // --- THIS IS THE FIX ---
     // Changed from QuantityToAdd and initialized to 0.
@@ -57,7 +57,7 @@ public partial class Product : ObservableObject
 public class Image
 {
     [JsonPropertyName("src")]
-    public string Src { get; set; }
+    public required string Src { get; set; }
 }
 
 public class Variation
@@ -66,15 +66,15 @@ public class Variation
     public int Id { get; set; }
 
     [JsonPropertyName("sku")]
-    public string Sku { get; set; }
+    public required string Sku { get; set; }
 
     [JsonPropertyName("regular_price")]
-    public string RegularPrice { get; set; }
+    public required string RegularPrice { get; set; }
 
     [JsonPropertyName("stock_quantity")]
     public int? StockQuantity { get; set; }
 
     [JsonPropertyName("uom")]
-    public string Uom { get; set; }
+    public required string Uom { get; set; }
 }
 

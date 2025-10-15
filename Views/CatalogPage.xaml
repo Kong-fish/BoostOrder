@@ -11,17 +11,14 @@
     <Grid RowDefinitions="Auto, Auto, *">
         <!-- 1. Custom Header -->
         <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15" ColumnDefinitions="Auto, *, Auto">
-            <Button Text="&lt;" TextColor="White" FontSize="24" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" />
-            <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Button Text="&lt;" TextColor="White" FontSize="24" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" Command="{Binding GoBackCommand}" />
+            <Label Grid.Column="1" Text="Categories Name" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
             <HorizontalStackLayout Grid.Column="2" Spacing="10" VerticalOptions="Center">
-                 <Label Text="Company Name" TextColor="White" FontSize="12" VerticalOptions="Center" />
+                 <Label Text="Company Name" TextColor="White" VerticalOptions="Center" />
                 <Border StrokeShape="RoundRectangle 50" BackgroundColor="White" HeightRequest="34" WidthRequest="34" VerticalOptions="Center">
                     <Label Text="CN" TextColor="#007AFF" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Border>
-                <Image Source="threedots.png" 
-                        VerticalOptions="Center" 
-                        HeightRequest="24" 
-                        WidthRequest="24">
+                <Image Source="threedots.png" VerticalOptions="Center" HeightRequest="24" WidthRequest="24">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding MenuCommand}" />
                     </Image.GestureRecognizers>
@@ -30,26 +27,21 @@
         </Grid>
         
         <!-- 2. Search Bar Area with Cart Icon & Badge -->
-        <Grid Grid.Row="1" Margin="10,5">
-           <Border Stroke="LightGray" StrokeThickness="1" StrokeShape="RoundRectangle 5">
-                <Grid ColumnDefinitions="*, Auto">
-                    <SearchBar Grid.Column="0" 
-                               Placeholder="Search..." 
-                               Text="{Binding SearchText}" 
-                               CancelButtonColor="Transparent"/>
-
-                    <Grid Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0">
-                         <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
-                         <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
-                                 IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}"
-                                 HorizontalOptions="End" VerticalOptions="Start"
-                                 TranslationX="5" TranslationY="-5">
-                              <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
-                         </Border>
-                    </Grid>
-                </Grid>
+        <Grid Grid.Row="1" Margin="10,5" ColumnDefinitions="*, Auto" ColumnSpacing="10">
+            <Border Grid.Column="0" Stroke="LightGray" StrokeThickness="1" StrokeShape="RoundRectangle 5">
+                <SearchBar Placeholder="Search..." Text="{Binding SearchText}" CancelButtonColor="Transparent"/>
             </Border>
+            <Grid Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                 <ImageButton Source="cart_icon.png" HeightRequest="30" WidthRequest="30" Command="{Binding GoToCartCommand}"/>
+                 <Border StrokeShape="RoundRectangle 20" BackgroundColor="Red"
+                         IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}"
+                         HorizontalOptions="End" VerticalOptions="Start"
+                         TranslationX="5" TranslationY="-5">
+                      <Label Text="{Binding CartItemCount}" TextColor="White" FontSize="10" Padding="5,2" />
+                 </Border>
+            </Grid>
         </Grid>
+
 
         <!-- 3. Main Content Area -->
         <Grid Grid.Row="2">
@@ -57,47 +49,64 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Product">
                         <Border Stroke="LightGray" StrokeThickness="1" Margin="10" Padding="10">
-                             <Grid ColumnDefinitions="100, *" RowDefinitions="Auto, Auto" RowSpacing="10">
-                                <ffimageloading:CachedImage Grid.Column="0" Grid.RowSpan="2" 
-                                                            Source="{Binding ImageUrl}" 
-                                                            ErrorPlaceholder="no_image.png" 
-                                                            Aspect="AspectFill" 
-                                                            HeightRequest="100" 
-                                                            WidthRequest="100" 
-                                                            CacheDuration="30" />
-                                
-                                <VerticalStackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="Start">
-                                    <Label Text="{Binding Sku}" FontSize="12" TextColor="Gray"/>
+                             <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto" ColumnSpacing="10" RowSpacing="10">
+            
+                                <!-- Product Info (Top Left) -->
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="Start" Spacing="5">
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Sku}" FontSize="12" TextColor="Gray"/>
+                                        <Label Text="{Binding Variations[0].StockQuantity, FallbackValue=0, StringFormat=' {0} in stock'}" TextColor="Green" FontSize="12" />
+                                    </HorizontalStackLayout>
                                     <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
                                     <Label Text="{Binding DisplayPrice, StringFormat='RM {0}'}" FontAttributes="Bold" FontSize="14" />
                                 </VerticalStackLayout>
                                 
-                                <!-- THE FIX: Updated UI to match the screenshot -->
-                                <Grid Grid.Column="1" Grid.Row="1" ColumnDefinitions="*, Auto" VerticalOptions="End" ColumnSpacing="10">
-                                    <Border Grid.Column="0" Stroke="LightGray" StrokeThickness="1" Padding="0" HeightRequest="45">
-                                        <Grid ColumnDefinitions="Auto, *">
-                                            <Picker Grid.Column="0"
-                                                    ItemsSource="{Binding Variations}"
-                                                    SelectedItem="{Binding SelectedVariation}"
-                                                    ItemDisplayBinding="{Binding Uom}"
-                                                    WidthRequest="80"
-                                                    VerticalOptions="Center"/>
-                                            
-                                            <HorizontalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
-                                                <Button Text="-" 
-                                                        WidthRequest="40"
-                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=DecrementQuantityCommand}"
-                                                        CommandParameter="{Binding .}"/>
-                                                <Label Text="{Binding QuantityToAdd}" VerticalOptions="Center" FontSize="16"/>
-                                                <Button Text="+" 
-                                                        WidthRequest="40"
-                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=IncrementQuantityCommand}"
-                                                        CommandParameter="{Binding .}"/>
-                                            </HorizontalStackLayout>
-                                        </Grid>
+                                <!-- Image (Top Right) -->
+                                <ffimageloading:CachedImage 
+                                    Grid.Row="0" Grid.Column="1"
+                                    Source="{Binding ImageUrl}" 
+                                    ErrorPlaceholder="no_image.png" 
+                                    Aspect="AspectFill" 
+                                    HeightRequest="80" 
+                                    WidthRequest="80" 
+                                    CacheDuration="30" />
+                                
+                                <!-- Controls (Bottom, spanning both columns) -->
+                                <!-- Controls (Bottom, spanning both columns) -->
+                                <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnDefinitions="Auto, *, Auto" VerticalOptions="End" ColumnSpacing="10">
+                                    <!-- Rectangle 1: UOM Dropdown -->
+                                    <Border Grid.Column="0" Stroke="LightGray" StrokeThickness="1" Padding="5,0" HeightRequest="45">
+                                        <Picker ItemsSource="{Binding Variations}"
+                                                SelectedItem="{Binding SelectedVariation}"
+                                                ItemDisplayBinding="{Binding Uom}"
+                                                WidthRequest="80"
+                                                VerticalOptions="Center"/>
                                     </Border>
                                     
-                                    <Button Grid.Column="1" 
+                                    <!-- Rectangle 2: Quantity Stepper -->
+                                   <!-- Rectangle 2: Quantity Stepper -->
+                                    <Border Grid.Column="1" Stroke="LightGray" StrokeThickness="1" Padding="5,0" HeightRequest="45">
+                                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                                            <Button Text="-" 
+                                                    WidthRequest="40"
+                                                    BackgroundColor="Transparent"
+                                                    TextColor="Black"
+                                                    FontSize="20"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=DecrementQuantityCommand}"
+                                                    CommandParameter="{Binding .}"/>
+                                            <Label Text="{Binding QuantityToAdd}" VerticalOptions="Center" FontSize="16" TextColor="Black" />
+                                            <Button Text="+" 
+                                                    WidthRequest="40"
+                                                    BackgroundColor="Transparent"
+                                                    TextColor="Black"
+                                                    FontSize="20"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CatalogViewModel}}, Path=IncrementQuantityCommand}"
+                                                    CommandParameter="{Binding .}"/>
+                                        </HorizontalStackLayout>
+                                    </Border>
+                                    
+                                    <!-- Circle: Add to Cart Button -->
+                                    <Button Grid.Column="2" 
                                             Text="+" 
                                             FontSize="Large"
                                             WidthRequest="50"

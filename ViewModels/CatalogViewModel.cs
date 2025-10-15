@@ -47,17 +47,36 @@ public partial class CatalogViewModel : ObservableObject
         CartItemCount = _cartService.ItemCount;
     }
     
-    // --- THIS IS THE FIX: A simple, robust AddToCart command ---
     [RelayCommand]
     private void AddToCart(Product product)
     {
         if (product == null || product.SelectedVariation == null)
             return;
 
-        _cartService.AddToCart(product, product.SelectedVariation);
-        Shell.Current.DisplayAlert("Added to Cart", $"1 x {product.Name} ({product.SelectedVariation.Uom}) was added.", "OK");
+        _cartService.AddToCart(product, product.SelectedVariation, product.QuantityToAdd);
+        Shell.Current.DisplayAlert("Added to Cart", $"{product.QuantityToAdd} x {product.Name} ({product.SelectedVariation.Uom}) was added.", "OK");
+        
+        product.QuantityToAdd = 1;
     }
-    
+
+    [RelayCommand]
+    private void IncrementQuantity(Product product)
+    {
+        if (product != null)
+        {
+            product.QuantityToAdd++;
+        }
+    }
+
+    [RelayCommand]
+    private void DecrementQuantity(Product product)
+    {
+        if (product != null && product.QuantityToAdd > 1)
+        {
+            product.QuantityToAdd--;
+        }
+    }
+
     [RelayCommand]
     private async Task GoToCartAsync()
     {
@@ -75,7 +94,18 @@ public partial class CatalogViewModel : ObservableObject
             {
                 var apiProducts = await _productService.GetProductsAsync();
                 _allProducts = apiProducts.Where(p => p.Type == "variable").ToList();
-                _allProducts.ForEach(p => p.SetDefaultVariation());
+                
+                // --- THIS IS THE FIX for the UOM dropdown default ---
+                foreach (var product in _allProducts)
+                {
+                    // Try to find a variation with "Unit" and set it as the default.
+                    var defaultVariation = product.Variations.FirstOrDefault(v => v.Uom.Equals("Unit", StringComparison.OrdinalIgnoreCase));
+                    
+                    // If "Unit" is not found, fall back to the first variation in the list.
+                    product.SelectedVariation = defaultVariation ?? product.Variations.FirstOrDefault();
+                }
+                // ---------------------------------------------------
+
                 await _databaseService.SaveProductsAsync(_allProducts);
             }
             else
