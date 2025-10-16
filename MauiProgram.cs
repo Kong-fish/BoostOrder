@@ -26,13 +26,13 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProductService>();
         builder.Services.AddSingleton<CartService>();
         // ViewModels
-        builder.Services.AddTransient<CatalogViewModel>();
-        // For each product different instance
+        builder.Services.AddSingleton<CatalogViewModel>();
         builder.Services.AddSingleton<CartViewModel>();
         //Need to stay alive for the whole app
         // Views
         builder.Services.AddTransient<CatalogPage>();
         builder.Services.AddTransient<CartPage>();
+        // For each product different instance
 
 #if DEBUG
 		builder.Logging.AddDebug();
