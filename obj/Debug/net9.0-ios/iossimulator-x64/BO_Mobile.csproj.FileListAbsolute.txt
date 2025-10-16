@@ -296,9 +296,8 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x6
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@3x.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@2x.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\Contents.json
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\cart_icon.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\threedots.png
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\back_arrow.png
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\cart_icon.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.outputs
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\MauiInfo.plist

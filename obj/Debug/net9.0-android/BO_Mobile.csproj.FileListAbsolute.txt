@@ -53,8 +53,8 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable-xhdpi\dotnet_bot.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable-mdpi\dotnet_bot.png
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\cart_icon.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\threedots.png
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\resizetizer\r\drawable\cart_icon.png
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\mauiimage.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\mauiimage.outputs
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\libraryprojectimports.cache
@@ -966,12 +966,12 @@ C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\stamp\_Conv
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.HotReload.Forms.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.TapContract.dll
+C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-android\Microsoft.Maui.Controls.HotReload.Forms.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.TapContract.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\bin\Debug\net9.0-android\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll
 C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\BO_Mobile.csproj.Up2Date
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.Maui.Controls.HotReload.Forms.dll
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.TapContract.dll
-C:\Users\kongf\Desktop\BoostOrder\BO_Mobile\obj\Debug\net9.0-android\android\assets\arm64-v8a\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll

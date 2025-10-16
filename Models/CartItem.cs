@@ -1,12 +1,15 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BO_Mobile.Models;
+//class allow complier to data bind
 public partial class CartItem : ObservableObject
 {
-    public int ProductId { get; set; }
-    public int VariationId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Sku { get; set; } = string.Empty;
+    public required int ProductId { get; set; }
+    public required int VariationId { get; set; }
+    public required string Name { get; set; } = string.Empty;
+    public required string Sku { get; set; } = string.Empty;
+    
+    public string Uom { get; set; } = string.Empty;
     public string ImageUrl { get; set; } = string.Empty;
     public decimal Price { get; set; }
 

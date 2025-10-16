@@ -27,13 +27,11 @@ public partial class Product : ObservableObject
     [JsonPropertyName("variations")]
     public required List<Variation> Variations { get; set; }
 
-    // --- THIS IS THE FIX ---
-    // Changed from QuantityToAdd and initialized to 0.
-    // This property will now reflect the actual quantity of this item in the cart.
     [ObservableProperty]
-    private int _quantityInCart = 0;
+    private int _quantityToAdd = 1;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(DisplayPrice))]
     private Variation _selectedVariation;
 
     public string DisplayPrice => SelectedVariation?.RegularPrice ?? "0.00";

@@ -19,8 +19,14 @@ public partial class CatalogViewModel : ObservableObject
     [ObservableProperty]
     private string _searchText = string.Empty;
 
+    // --- THIS IS THE FIX (Part 1) ---
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsCartBadgeVisible))] // Notifies the UI that the badge visibility might have changed
     private int _cartItemCount;
+
+    // This new property provides a simple true/false value for the UI.
+    public bool IsCartBadgeVisible => CartItemCount > 0;
+    // --------------------------------
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
@@ -95,16 +101,11 @@ public partial class CatalogViewModel : ObservableObject
                 var apiProducts = await _productService.GetProductsAsync();
                 _allProducts = apiProducts.Where(p => p.Type == "variable").ToList();
                 
-                // --- THIS IS THE FIX for the UOM dropdown default ---
                 foreach (var product in _allProducts)
                 {
-                    // Try to find a variation with "Unit" and set it as the default.
                     var defaultVariation = product.Variations.FirstOrDefault(v => v.Uom.Equals("Unit", StringComparison.OrdinalIgnoreCase));
-                    
-                    // If "Unit" is not found, fall back to the first variation in the list.
                     product.SelectedVariation = defaultVariation ?? product.Variations.FirstOrDefault();
                 }
-                // ---------------------------------------------------
 
                 await _databaseService.SaveProductsAsync(_allProducts);
             }
@@ -133,7 +134,7 @@ public partial class CatalogViewModel : ObservableObject
     {
         var filteredList = string.IsNullOrWhiteSpace(SearchText)
             ? _allProducts
-            : _allProducts.Where(p =>
+                        : _allProducts.Where(p =>
                 p.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
                 p.Sku.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
         
