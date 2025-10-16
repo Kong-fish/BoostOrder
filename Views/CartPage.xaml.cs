@@ -13,11 +13,10 @@ public partial class CartPage : ContentPage
         _viewModel = viewModel;
 	}
 
-    // Called every time when the page becomes visible
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        // Update the totals to ensure they are fresh every time the user navigates to the cart.
         _viewModel.UpdateCartTotals();
     }
 }
+

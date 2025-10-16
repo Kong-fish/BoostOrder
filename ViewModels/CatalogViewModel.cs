@@ -29,6 +29,7 @@ public partial class CatalogViewModel : ObservableObject
 
     public bool IsNotBusy => !IsBusy;
     private List<Product> _allProducts = new();
+    private bool _isInitialized = false;
 
     public CatalogViewModel(ProductService productService, DatabaseService databaseService, CartService cartService)
     {
@@ -76,6 +77,14 @@ public partial class CatalogViewModel : ObservableObject
         {
             product.QuantityToAdd--;
         }
+    }
+
+    [RelayCommand]
+    private async Task InitializeAsync()
+    {
+        if (_isInitialized) return;
+        await GetProductsAsync();
+        _isInitialized = true;
     }
 
     [RelayCommand]
@@ -129,11 +138,21 @@ public partial class CatalogViewModel : ObservableObject
             : _allProducts.Where(p =>
                 p.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
                 p.Sku.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
-        
-        Products.Clear();
+
+        // Remove items that are in the current list but not in the new filtered list.
+        var itemsToRemove = Products.Where(p => !filteredList.Any(fp => fp.Id == p.Id)).ToList();
+        foreach (var item in itemsToRemove)
+        {
+            Products.Remove(item);
+        }
+
+        // Add items that are in the new filtered list but not in the current list.
         foreach (var product in filteredList)
         {
-            Products.Add(product);
+            if (!Products.Any(p => p.Id == product.Id))
+            {
+                Products.Add(product);
+            }
         }
     }
 }
