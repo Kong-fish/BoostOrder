@@ -19,15 +19,10 @@ public partial class CatalogViewModel : ObservableObject
     [ObservableProperty]
     private string _searchText = string.Empty;
 
-    // --- THIS IS THE FIX (Part 1) ---
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(IsCartBadgeVisible))] // Notifies the UI that the badge visibility might have changed
     private int _cartItemCount;
 
-    // This new property provides a simple true/false value for the UI.
-    public bool IsCartBadgeVisible => CartItemCount > 0;
-    // --------------------------------
-
+    // to hide data when API is loading
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool _isBusy;
@@ -100,19 +95,15 @@ public partial class CatalogViewModel : ObservableObject
             {
                 var apiProducts = await _productService.GetProductsAsync();
                 _allProducts = apiProducts.Where(p => p.Type == "variable").ToList();
-                
-                foreach (var product in _allProducts)
-                {
-                    var defaultVariation = product.Variations.FirstOrDefault(v => v.Uom.Equals("Unit", StringComparison.OrdinalIgnoreCase));
-                    product.SelectedVariation = defaultVariation ?? product.Variations.FirstOrDefault();
-                }
-
                 await _databaseService.SaveProductsAsync(_allProducts);
             }
             else
             {
                 _allProducts = await _databaseService.GetProductsAsync();
             }
+            // Set the default variation for each product AFTER loading the data, regardless of the source (API or local database).
+            _allProducts.ForEach(p => p.SetDefaultVariation());
+
             FilterProducts();
         }
         catch (Exception ex)
@@ -124,17 +115,18 @@ public partial class CatalogViewModel : ObservableObject
             IsBusy = false;
         }
     }
-    
+
     partial void OnSearchTextChanged(string value)
     {
         FilterProducts();
     }
 
+    // c. Product search [FULLFILLED]
     private void FilterProducts()
     {
         var filteredList = string.IsNullOrWhiteSpace(SearchText)
             ? _allProducts
-                        : _allProducts.Where(p =>
+            : _allProducts.Where(p =>
                 p.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
                 p.Sku.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
         

@@ -8,9 +8,8 @@
              x:DataType="viewModels:CatalogViewModel"
              Shell.NavBarIsVisible="False">
 
-    <!-- THE FIX: Main grid now has 3 rows again -->
     <Grid RowDefinitions="Auto, Auto, *">
-        <!-- 1. Custom Header -->
+        <!-- Header -->
         <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15" ColumnDefinitions="Auto, *, Auto">
             <HorizontalStackLayout Grid.Column="0" Spacing="10" VerticalOptions="Center">
                 <Button Text="&lt;" TextColor="White" FontSize="15" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" TranslationX="-5" />
@@ -48,11 +47,11 @@
                         <Border Stroke="LightGray" StrokeThickness="1" Margin="10" Padding="10">
                              <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto" ColumnSpacing="10" RowSpacing="10">
             
-                                <!-- Product Info (Top Left) -->
+                                <!-- Product Info -->
                                 <VerticalStackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="Start" Spacing="5">
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Sku}" FontSize="12" TextColor="Gray"/>
-                                        <Label Text="{Binding Variations[0].StockQuantity, FallbackValue=0, StringFormat=' {0} in stock'}" TextColor="Green" FontSize="12" />
+                                        <Label Text="{Binding DisplayStockQuantity, FallbackValue=0, StringFormat=' {0} in stock'}" TextColor="Green" FontSize="12" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="13"/>
@@ -62,7 +61,7 @@
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 
-                                <!-- Image (Top Right) -->
+                                <!-- Image  -->
                                 <ffimageloading:CachedImage 
                                     Grid.Row="0" Grid.Column="1"
                                     Source="{Binding ImageUrl}" 
@@ -72,7 +71,6 @@
                                     WidthRequest="100" 
                                     CacheDuration="30" />
                                 
-                                <!-- Controls are now smaller and aligned to the right -->
                                 <HorizontalStackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End" Spacing="5">
                                     <!-- UOM Dropdown -->
                                     <Border Stroke="LightGray" StrokeThickness="1" Padding="5,0" HeightRequest="40">
@@ -84,7 +82,7 @@
                                                 VerticalOptions="Center"/>
                                     </Border>
                                     
-                                    <!-- Quantity Stepper -->
+                                    <!-- Quantity Counter -->
                                     <Border Stroke="LightGray" StrokeThickness="1" Padding="3,0" HeightRequest="40" WidthRequest="110">
                                         <HorizontalStackLayout Spacing="3" VerticalOptions="Center">
                                             <Button Text="-" 

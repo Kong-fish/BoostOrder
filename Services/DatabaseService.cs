@@ -3,6 +3,9 @@ using System.Text.Json;
 using BO_Mobile.Models;
 
 namespace BO_Mobile.Services;
+// b. It should work offline, i.e. when there’s no internet, the catalog will show
+// whatever that was downloaded before which is using SQLite 
+// [FULLFILLED]
 public class DatabaseService
 {
     private SQLiteAsyncConnection _database;
@@ -49,7 +52,7 @@ public class DatabaseService
 }
 
 // A "Data Transfer Object" for storing Products in SQLite.
-// SQLite can't store complex objects like lists directly, so we serialize them to JSON strings.
+// use a reasonable means to store the data locally [FULLFILLED]
 public class ProductDto
 {
     [PrimaryKey]
@@ -57,7 +60,7 @@ public class ProductDto
     public string Name { get; set; }
     public string Sku { get; set; }
     public string Type { get; set; }
-    public bool InStock { get; set; } // Added to match the Product model
+    public bool InStock { get; set; }
 
     // Store complex data as a JSON string
     public string ImagesJson { get; set; }

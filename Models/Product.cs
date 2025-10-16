@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BO_Mobile.Models;
-
+//Default Procudt class
+//class allow complier to data bind
 public partial class Product : ObservableObject
 {
     [JsonPropertyName("id")]
@@ -32,9 +33,13 @@ public partial class Product : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(DisplayPrice))]
+    [NotifyPropertyChangedFor(nameof(DisplayStockQuantity))]
+    //When change UOM or stock can update
     private Variation _selectedVariation;
 
     public string DisplayPrice => SelectedVariation?.RegularPrice ?? "0.00";
+    public int? DisplayStockQuantity => SelectedVariation?.Inventory?.Sum(i => (int)i.StockQuantity);
+    // use int here since stock is always whole number
     
     public string ImageUrl
     {
@@ -57,7 +62,12 @@ public class Image
     [JsonPropertyName("src")]
     public required string Src { get; set; }
 }
-
+public class Inventory
+{
+    [JsonPropertyName("stock_quantity")]
+    public decimal StockQuantity { get; set; }
+}
+//Different variation of the product
 public class Variation
 {
     [JsonPropertyName("id")]
@@ -69,8 +79,8 @@ public class Variation
     [JsonPropertyName("regular_price")]
     public required string RegularPrice { get; set; }
 
-    [JsonPropertyName("stock_quantity")]
-    public int? StockQuantity { get; set; }
+    [JsonPropertyName("inventory")]
+    public List<Inventory> Inventory { get; set; }
 
     [JsonPropertyName("uom")]
     public required string Uom { get; set; }

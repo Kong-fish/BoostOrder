@@ -3,7 +3,7 @@ using System.Text.Json;
 using BO_Mobile.Models;
 
 namespace BO_Mobile.Services;
-
+// Fetch products from API [FULLFILLED]
 public class ProductService
 {
     private readonly HttpClient _httpClient;
@@ -11,10 +11,11 @@ public class ProductService
     private const string Username = "ck_b9e4e281dc7aa5595062207a479090a390304335";
     private const string Password = "cs_95b5c4724a48737ed72daf8314dae9cbc83842ae";
 
+    //Use Basic Auth when calling our endpoints. [FULLFILLED]
     public ProductService()
     {
         _httpClient = new HttpClient();
-        // Set up Basic Authentication
+        //Basic Authentication
         var authToken = System.Text.Encoding.UTF8.GetBytes($"{Username}:{Password}");
         _httpClient.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Basic", Convert.ToBase64String(authToken));
@@ -58,7 +59,7 @@ public class ProductService
             }
             else
             {
-                // This will catch API errors like authentication failures
+                // Catch authentication error
                 var errorContent = await response.Content.ReadAsStringAsync();
                 throw new Exception($"Failed to fetch products. Status: {response.StatusCode}, Content: {errorContent}");
             }

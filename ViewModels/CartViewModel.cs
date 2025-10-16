@@ -10,7 +10,7 @@ public partial class CartViewModel : ObservableObject
 {
     private readonly CartService _cartService;
 
-    // Exposes the list of items directly from the cart service
+    // Show the list of items directly from the cart service
     public ObservableCollection<CartItem> Items => _cartService.Items;
 
     [ObservableProperty]
@@ -22,14 +22,14 @@ public partial class CartViewModel : ObservableObject
     public CartViewModel(CartService cartService)
     {
         _cartService = cartService;
-        // Subscribe to changes in the cart to keep totals updated in real-time
+        // Sensitive to changes in the cart to keep totals updated in real-time
         _cartService.Items.CollectionChanged += (s, e) => UpdateCartTotals();
     }
 
     [RelayCommand]
     private async Task GoBackAsync()
     {
-        // Navigates back to the previous page (the catalog)
+        // Navigates back to catalog
         await Shell.Current.GoToAsync("..");
     }
 
@@ -45,7 +45,7 @@ public partial class CartViewModel : ObservableObject
     private void DecreaseQuantity(CartItem item)
     {
         if (item == null) return;
-        
+
         if (item.Quantity > 1)
         {
             item.Quantity--;
@@ -58,6 +58,7 @@ public partial class CartViewModel : ObservableObject
         UpdateCartTotals();
     }
 
+    // d. Clear cart from the menu on the top right corner [FULLFILLED]
     [RelayCommand]
     private void RemoveItem(CartItem item)
     {
@@ -83,8 +84,7 @@ public partial class CartViewModel : ObservableObject
         TotalItemCount = Items.Sum(i => i.Quantity);
         CartTotal = Items.Sum(i => i.Total);
         
-        // Explicitly tell the CartService to notify subscribers (like the CatalogViewModel)
-        // that a change has occurred, so the badge can update.
+        // tell CartService to notify view model and views that a change has occurred, so the badge can update.
         _cartService.NotifyStateChanged();
     }
 }

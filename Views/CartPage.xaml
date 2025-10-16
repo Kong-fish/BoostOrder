@@ -9,7 +9,7 @@
              Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto, *, Auto">
-        <!-- 1. Custom Header -->
+        <!-- Header -->
         <Grid Grid.Row="0" BackgroundColor="#007AFF" Padding="10,15">
             <Label Text="Cart" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
             <Button Text="&lt;" TextColor="White" FontSize="15" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding GoBackCommand}"/>
@@ -20,12 +20,14 @@
             </Image>
         </Grid>
 
-        <!-- 2. Main list of cart items -->
+        <!-- Cart items -->
         <CollectionView ItemsSource="{Binding Items}" Grid.Row="1" Margin="10,0">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:CartItem">
                     <SwipeView>
                         <SwipeView.RightItems>
+                            <!--c. Swipe to remove a product from the cart
+                                i. The new line item count & cart total should reflect immediately [FULLFILLED]-->
                             <SwipeItems>
                                 <SwipeItem Text="Delete" BackgroundColor="Red"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CartViewModel}}, Path=RemoveItemCommand}"
@@ -55,7 +57,6 @@
                                         HeightRequest="50" 
                                         WidthRequest="50" />
                                     
-                                    <!-- THE FIX (Part 1): Aligned to the right -->
                                     <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="10" VerticalOptions="Center" HorizontalOptions="End">
                                         <BoxView Color="#007AFF" WidthRequest="2" HeightRequest="20" VerticalOptions="Center"/>
                                         <Label Text="Order" TextColor="Gray" FontSize="12" VerticalOptions="Center"/>
@@ -75,8 +76,6 @@
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
-            <!-- THE FIX (Part 2): Total bar moved to CollectionView.Footer -->
             <CollectionView.Footer>
                 <Grid ColumnDefinitions="*, Auto" Padding="10,15">
                     <Label Grid.Column="0" Text="Total" FontAttributes="Bold" VerticalOptions="Center"/>

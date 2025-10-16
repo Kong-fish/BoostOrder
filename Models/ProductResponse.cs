@@ -1,8 +1,7 @@
 using System.Text.Json.Serialization;
 
 namespace BO_Mobile.Models;
-//list of product from api
-//then got to product to seperate
+//Turn Data fetch from API into List<Product>
 public class ProductResponse
 {
     [JsonPropertyName("products")]
