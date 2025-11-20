@@ -8,15 +8,25 @@ public class ProductService
 {
     private readonly HttpClient _httpClient;
     private const string ApiUrl = "https://cloud.boostorder.com/bo-mart/api/v1/wp-json/wc/v1/bo/products";
-    private const string Username = "ck_b9e4e281dc7aa5595062207a479090a390304335";
-    private const string Password = "cs_95b5c4724a48737ed72daf8314dae9cbc83842ae";
 
     //Use Basic Auth when calling our endpoints. [FULLFILLED]
-    public ProductService()
+    public ProductService(HttpClient httpClient)
     {
-        _httpClient = new HttpClient();
-        //Basic Authentication
-        var authToken = System.Text.Encoding.UTF8.GetBytes($"{Username}:{Password}");
+        _httpClient = httpClient;
+    }
+
+    public async Task InitializeAsync()
+    {
+        var username = await SecureStorage.GetAsync("ApiUsername");
+        var password = await SecureStorage.GetAsync("ApiPassword");
+
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        {
+            throw new InvalidOperationException("API credentials not found. Ensure they are saved to SecureStorage before initialization.");
+        }
+
+        // Apply Basic Authentication
+        var authToken = System.Text.Encoding.UTF8.GetBytes($"{username}:{password}");
         _httpClient.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Basic", Convert.ToBase64String(authToken));
     }

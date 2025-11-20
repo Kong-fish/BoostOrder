@@ -35,7 +35,7 @@ public partial class Product : ObservableObject
     [NotifyPropertyChangedFor(nameof(DisplayPrice))]
     [NotifyPropertyChangedFor(nameof(DisplayStockQuantity))]
     //When change UOM or stock can update
-    private Variation _selectedVariation;
+    private Variation? _selectedVariation;
 
     public string DisplayPrice => SelectedVariation?.RegularPrice ?? "0.00";
     public int? DisplayStockQuantity => SelectedVariation?.Inventory?.Sum(i => (int)i.StockQuantity);
