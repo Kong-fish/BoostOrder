@@ -21,6 +21,10 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 		// Dependency Injection: allow MVVM. loosely coupled
+
+        // Register HttpClient for injection into ProductService
+        builder.Services.AddSingleton<HttpClient>();
+
         // Services
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<ProductService>();
