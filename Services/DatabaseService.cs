@@ -11,7 +11,7 @@ public class DatabaseService
     private SQLiteAsyncConnection _database;
     private bool _isInitialized = false;
 
-    // This defines a path for the database file on the device
+    // defines a path for the database file on the device
     private static string DbPath => Path.Combine(FileSystem.AppDataDirectory, "products.db3");
 
     public DatabaseService()
@@ -34,7 +34,7 @@ public class DatabaseService
         await InitializeAsync();
         var productDtos = await _database.Table<ProductDto>().ToListAsync();
 
-        // Convert from DTO back to the main Product model
+        // Convert from Data Transfer Object back to the main Product model
         return productDtos.Select(dto => dto.ToProduct()).ToList();
     }
 
@@ -51,7 +51,7 @@ public class DatabaseService
     }
 }
 
-// A "Data Transfer Object" for storing Products in SQLite.
+// DTO for storing Products in SQLite.
 // use a reasonable means to store the data locally [FULLFILLED]
 public class ProductDto
 {

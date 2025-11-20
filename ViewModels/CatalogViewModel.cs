@@ -9,9 +9,9 @@ namespace BO_Mobile.ViewModels;
 
 public partial class CatalogViewModel : ObservableObject
 {
-    private readonly ProductService _productService;
-    private readonly DatabaseService _databaseService;
-    private readonly CartService _cartService;
+    private readonly ProductService _productService;//with internet connection
+    private readonly DatabaseService _databaseService;//offline data
+    private readonly CartService _cartService;//badge function
 
     [ObservableProperty]
     private ObservableCollection<Product> _products;
@@ -154,6 +154,7 @@ public partial class CatalogViewModel : ObservableObject
                 Products.Add(product);
             }
         }
+        // this two function together when new value is type into the search bar = refresh searched item
     }
 }
 

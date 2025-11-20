@@ -20,7 +20,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-		// Dependency Injection: allow MVVM 
+		// Dependency Injection: allow MVVM. loosely coupled
         // Services
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<ProductService>();
@@ -28,7 +28,7 @@ public static class MauiProgram
         // ViewModels
         builder.Services.AddSingleton<CatalogViewModel>();
         builder.Services.AddSingleton<CartViewModel>();
-        //Need to stay alive for the whole app
+        //Need to stay alive for the whole app (Singleton)
         // Views
         builder.Services.AddTransient<CatalogPage>();
         builder.Services.AddTransient<CartPage>();

@@ -46,7 +46,7 @@ public partial class Product : ObservableObject
         get
         {
             var url = Images?.FirstOrDefault()?.Src;
-            Debug.WriteLine($"[Image URL] For product '{Name}': {url ?? "NULL"}");
+            // Debug.WriteLine($"[Image URL] For product '{Name}': {url ?? "NULL"}");
             return url;
         }
     }
@@ -66,6 +66,7 @@ public class Inventory
 {
     [JsonPropertyName("stock_quantity")]
     public decimal StockQuantity { get; set; }
+    //easy to track future order, not shown to users
 }
 //Different variation of the product
 public class Variation
